@@ -21,7 +21,9 @@ export default class Resolution {
 		let {width,height} = Dimensions.get(dim);
 		if(dim != "screen")height-=navHeight;
 		let w = PixelRatio.getPixelSizeForLayoutSize(width);
-		let h = PixelRatio.getPixelSizeForLayoutSize(height);
+// 		let h = PixelRatio.getPixelSizeForLayoutSize(height);
+		let statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
+		let h = PixelRatio.getPixelSizeForLayoutSize(height - statusBarHeight)		
 
 		let fw_design_scale = designSize.width/w;
 		fw_width = designSize.width;
